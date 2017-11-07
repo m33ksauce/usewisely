@@ -4,6 +4,9 @@ var config = function(file = "config.json") {
     if (!conf.port) {
         conf.port = 3000;
     }
+    if (!conf.leFile) {
+        conf.leFile = 'le.csv'
+    }
 
     return conf;
 }
