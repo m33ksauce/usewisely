@@ -2,17 +2,23 @@ html
     head
         title= title
         script(type='text/javascript').
-            var c = function() {
-                var now = new Date()
-                var timeLeft = new Date(#{timeLeft})
-
-                while(timeLeft - now > 0) {
-                    setTimeout(function() {
-                        //- diff = now - timeLeft;
-                        //- document.getElementById('countdown').innerText = diff.getTime();
-                        console.log("hello");
-                    }, 1000);
-                }
+            var getTimeDifference = function(start, stop) {
+                var remaining = stop - start;
+                return {
+                    'days': Math.floor((remaining/(1000*60*60*24))),
+                    'hours': Math.floor((remaining/(1000*60*60)) % 24),
+                    'minutes': Math.floor((remaining/(1000*60)) % 60),
+                    'seconds': Math.floor((remaining/(1000)) % 60)
+                };
+            };
+            window.onload = function() {
+                setInterval(function() {
+                    var now = new Date();
+                    var timeLeft = new Date(#{timeLeft});
+                    d = getTimeDifference(now, timeLeft);
+                    document.getElementById('countdown').innerText = d.days + ':'
+                        + d.hours + ':' + d.minutes + ':' + d.seconds;
+                }, 1000);
             };
     body
         h1(id='countdown')
