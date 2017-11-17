@@ -1,6 +1,22 @@
 html
     head
         title= title
+        style(type='text/css').
+            h1 {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%)
+            }
+            span {
+                font-size: 2em;
+            }
+            em {
+                font-size: 1em!;
+                padding-right: 0.25em;
+            }
         script(type='text/javascript').
             var getTimeDifference = function(start, stop) {
                 var remaining = stop - start;
@@ -11,14 +27,27 @@ html
                     'seconds': Math.floor((remaining/(1000)) % 60)
                 };
             };
-            window.onload = function() {
-                setInterval(function() {
+            var formatTimer = function() {
                     var now = new Date();
                     var timeLeft = new Date(#{timeLeft});
-                    d = getTimeDifference(now, timeLeft);
-                    document.getElementById('countdown').innerText = d.days + ':'
-                        + d.hours + ':' + d.minutes + ':' + d.seconds;
-                }, 1000);
+                    cd = getTimeDifference(now, timeLeft);
+                    document.getElementById('days').innerText = cd.days;
+                    document.getElementById('hours').innerText = cd.hours;
+                    document.getElementById('minutes').innerText = cd.minutes;
+                    document.getElementById('seconds').innerText = cd.seconds;
+                };
+            window.onload = function() {
+                formatTimer();
+                document.getElementById('countdown').style = 'display:block';
+                setInterval(formatTimer, 1000);
             };
     body
         h1(id='countdown')
+            span(id='days')
+            em days
+            span(id='hours')
+            em hours
+            span(id='minutes')
+            em minutes
+            span(id='seconds')
+            em seconds

@@ -14,25 +14,75 @@ app.get('/', function (req, res) {
 
 app.get('/:month/:day/:year', function (req, res) {
     var months = {
-        'january': 31,
-        'february': 29,
-        'march': 31,
-        'april': 30,
-        'may': 31,
-        'june': 30,
-        'july': 31,
-        'august': 31,
-        'september': 30,
-        'october': 31,
-        'november': 30,
-        'december': 31
+        'january': {
+            maxDays: 31,
+            order: 0
+        },
+        'february': {
+            maxDays: 29,
+            order: 1
+        },
+        'march': {
+            maxDays: 31,
+            order: 2
+        },
+        'april': {
+            maxDays: 30,
+            order: 3
+        },
+        'may': {
+            maxDays: 31,
+            order: 4
+        },
+        'june': {
+            maxDays: 30,
+            order: 5
+        },
+        'july':{
+            maxDays: 31,
+            order: 6
+        },
+        'august': {
+            maxDays: 31,
+            order: 7
+        },
+        'september': {
+            maxDays: 30,
+            order: 8
+        },
+        'october': {
+            maxDays: 31,
+            order: 9
+        },
+        'november': {
+            maxDays: 30,
+            order: 10
+        },
+        'december': {
+            maxDays: 31,
+            order: 11
+        }
     };
     
     var uMonth = req.params['month'].toLowerCase();
     var uDay = req.params['day'];
     var uYear = req.params['year'];
 
-    var timeLeft = new Date(2020, 10, 5);
+    if (uDay > months[uMonth].maxDays | uDay <= 0) {
+        res.render('error', {
+            'message': 'Invalid day for this month'
+        });
+        return;
+    }
+    
+    var now  = new Date();
+    var timeLeft = new Date(uYear, months[uMonth].order, uDay);
+    if (now < timeLeft) {
+        res.render('error', {
+            'message': 'DOB has not happened yet!'
+        });
+        return;
+    } 
         
     res.render('date', {
         'title': 'Use Wisely',
