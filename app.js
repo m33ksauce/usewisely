@@ -26,20 +26,19 @@ app.get('/:month/:day/:year', function (req, res) {
         return;
     }
 
-    now = new Date();
-    if (now < timeLeft) {
+    now = new Date();    
+    var dob  = new Date(uYear, months[uMonth].order, uDay);
+
+    if (now < dob) {
         res.render('error', {
-            'message': 'DOB has not happened yet!'
+            'message': 'D.O.B. has not happened yet!'
         });
         return;
     }
     
-    var DOB  = new Date(uYear, months[uMonth].order, uDay);
-    var timeLeft = new Date();
-        
     res.render('date', {
         'title': 'Use Wisely',
-        'timeLeft': timeLeft.getTime(),
+        'timeLeft': actuarial.getLifeExpectancy(dob),
         'le': config.leFile
     });
 });

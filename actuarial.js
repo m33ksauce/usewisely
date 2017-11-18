@@ -1,23 +1,42 @@
 var fs = require('fs');
 
-var parseCSV = function() {
-    return;
-}
+var parseCSV = function(csv) {
+    var data = new Array();
+    var arr = csv.split('\r\n');
+    for(var i = 0; i < arr.length; i++) {
+        var fields = arr[i].split(',');
+        data[i] = {
+            'age': parseInt(fields[0]),
+            'male': parseFloat(fields[1]),
+            'female': parseFloat(fields[2])
+        }
+    }
+    
+    return {
+        'getLEAvg': function(age = 0) {
+            var i = 0;
+            for (; data[i].age != age; i++);
+            return (data[i].male + data[i].female)/2;
+        }
+    }
+};
 
-var actuarial = function(dob = new Date()) {
+var actuarial = function() {
     var le_file = './le.csv';
     var le_data;
     var ready = false;
 
-    fs.readFileSync(le_file, 'utf8', function(err, data) {
+    fs.readFile(le_file, 'utf8', function(err, data) {
         if (err) throw err;
         le_data = parseCSV(data);
         ready = true;
     });
     
     return {
-        'getLifeExpectancy': function() {
-            return
+        'getLifeExpectancy': function(dob = new Date()) {
+            var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
+            console.log(age);
+            return le_data.getLEAvg(age)
         },
         'isReady': function() {
             return ready;
