@@ -31,16 +31,15 @@ var actuarial = function() {
         le_data = parseCSV(data);
         ready = true;
     });
+
+    var getLifeExpectancy = function(dob = new Date()) {
+        var now = new Date();
+        var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
+        return now.setFullYear(now.getFullYear() + Math.floor(le_data.getLEAvg(age)));
+    }
     
     return {
-        'getLifeExpectancy': function(dob = new Date()) {
-            var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
-            console.log(age);
-            return le_data.getLEAvg(age)
-        },
-        'isReady': function() {
-            return ready;
-        }
+        getLifeExpectancy
     };
 }
 

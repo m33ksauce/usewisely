@@ -37,7 +37,6 @@ html
                     document.getElementById('seconds').innerText = cd.seconds;
                 };
             window.onload = function() {
-                console.log(new Date(#{timeLeft}));
                 formatTimer();
                 document.getElementById('countdown').style = 'display:block';
                 setInterval(formatTimer, 1000);

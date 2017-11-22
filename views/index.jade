@@ -1,5 +1,12 @@
 html
     head
-        title Test
+        title #{title}
     body
-        h1= header
+        form
+            select
+                each mo in #{months}
+                    option(value=#{mo}) #{mo}
+            select
+                - var day = 0
+                while day <= #{maxDays}
+                    option(value=#{++day})

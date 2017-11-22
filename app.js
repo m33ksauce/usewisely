@@ -10,7 +10,7 @@ app.set('view engine', 'jade')
 
 app.get('/', function (req, res) {
     res.render('index', {
-        'header': 'hello!'
+        'title': 'Use Wisely'
     });
 });
 
@@ -23,7 +23,6 @@ app.get('/:month/:day/:year', function (req, res) {
         res.render('error', {
             'message': 'Invalid day for this month'
         });
-        return;
     }
 
     now = new Date();    
@@ -33,7 +32,6 @@ app.get('/:month/:day/:year', function (req, res) {
         res.render('error', {
             'message': 'D.O.B. has not happened yet!'
         });
-        return;
     }
     
     res.render('date', {
