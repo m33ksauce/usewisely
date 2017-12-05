@@ -1,5 +1,5 @@
 var months = function() {
-    return {
+    var months = {
         'january': {
             maxDays: 31,
             order: 0
@@ -49,6 +49,15 @@ var months = function() {
             order: 11
         }
     };
+    var getMonthByOrder = function(x) {
+        for(var m in months) {
+            if m.order == x {
+                return m;
+            }
+        }
+    }
+
+    return {}
 };
 
 module.exports = months;

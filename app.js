@@ -10,7 +10,8 @@ app.set('view engine', 'jade')
 
 app.get('/', function (req, res) {
     res.render('index', {
-        'title': 'Use Wisely'
+        'title': 'Use Wisely',
+        'months': monthts().getArray()
     });
 });
 

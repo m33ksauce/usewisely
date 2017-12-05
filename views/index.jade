@@ -4,9 +4,9 @@ html
     body
         form
             select
-                each mo in #{months}
-                    option(value=#{mo}) #{mo}
+                each mo in months
+                    option(value=mo) #{mo}
             select
                 - var day = 0
-                while day <= #{maxDays}
-                    option(value=#{++day})
+                while day <= maxDays
+                    option(value=++day)
