@@ -49,15 +49,29 @@ var months = function() {
             order: 11
         }
     };
-    var getMonthByOrder = function(x) {
-        for(var m in months) {
-            if m.order == x {
+
+    var getByOrder = function(x) {
+        for (m in months) {
+            if (m.order == x) {
                 return m;
             }
         }
+    };
+
+    var getByName = function(name) {
+        return months[name.toLowerCase()];
     }
 
-    return {}
+    var getAll = function() {
+        return Object.getOwnPropertyNames(months);
+    }
+    
+
+    return {
+        getAll,
+        getByOrder,
+        getByName
+    }
 };
 
 module.exports = months;

@@ -35,6 +35,7 @@ var actuarial = function() {
     var getLifeExpectancy = function(dob = new Date()) {
         var now = new Date();
         var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
+        console.log(age)
         return now.setFullYear(now.getFullYear() + Math.floor(le_data.getLEAvg(age)));
     }
     

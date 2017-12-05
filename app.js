@@ -11,7 +11,7 @@ app.set('view engine', 'jade')
 app.get('/', function (req, res) {
     res.render('index', {
         'title': 'Use Wisely',
-        'months': monthts().getArray()
+        'months': months
     });
 });
 
@@ -20,14 +20,14 @@ app.get('/:month/:day/:year', function (req, res) {
     var uDay = req.params['day'];
     var uYear = req.params['year'];
 
-    if (uDay > months[uMonth].maxDays | uDay <= 0) {
+    if (uDay > months.getByName(uMonth).maxDays | uDay <= 0) {
         res.render('error', {
             'message': 'Invalid day for this month'
         });
     }
 
     now = new Date();    
-    var dob  = new Date(uYear, months[uMonth].order, uDay);
+    var dob  = new Date(uYear, months.getByName(uMonth).order, uDay);
 
     if (now < dob) {
         res.render('error', {
