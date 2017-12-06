@@ -2,7 +2,7 @@ var fs = require('fs');
 
 var parseCSV = function(csv) {
     var data = new Array();
-    var arr = csv.split('\r\n');
+    var arr = csv.split('\n');
     for(var i = 0; i < arr.length; i++) {
         var fields = arr[i].split(',');
         data[i] = {
@@ -15,7 +15,7 @@ var parseCSV = function(csv) {
     return {
         'getLEAvg': function(age = 0) {
             var i = 0;
-            for (; data[i].age != age; i++);
+            for (i = 0; data[i].age != age; i++);
             return (data[i].male + data[i].female)/2;
         }
     }
@@ -35,7 +35,6 @@ var actuarial = function() {
     var getLifeExpectancy = function(dob = new Date()) {
         var now = new Date();
         var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
-        console.log(age)
         return now.setFullYear(now.getFullYear() + Math.floor(le_data.getLEAvg(age)));
     }
     
