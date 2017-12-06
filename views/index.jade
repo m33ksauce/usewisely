@@ -2,23 +2,25 @@ html
     head
         title #{title}
         script(type="text/javascript").
-            var getOptions = function(count) {
+            var setDays = function(e, max) {
                 var opts = "";
-                for (var i = 1; i <= count; i++) {
+                for (var i = 1; i <= max; i++) {
                     opts += '<option value="' + i + '">' + i + '</option>';
                 }
-                return opts;
+                e.innerHTML = opts;
             }
             
             window.onload = function() {
-                document.getElementById("month").addEventListener("selectionchange", function() {
-                    //var selected = document.getElementById("month").selectedIndex;
-                    document.getElementById("day").innerHTML = getOptions(1); //months.getByOrder(selected).maxDays
+                var daysElem = document.getElementById("day");
+                document.getElementById("month").addEventListener("change", function() {
+                    var selected = document.getElementById("month").selectedIndex;
+                    setDays(daysElem, !{months.getByOrder(selected).maxDays}); //months.getByOrder(selected).maxDays
                 });
             }
     body
         form
             select(id="month")
+                option(disabled, selected, value)
                 each mo in months.getAll()
                     option(value=mo.formatted) #{mo.formatted}
             select(id="day")
