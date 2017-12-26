@@ -1,10 +1,13 @@
 var config = require('./config.js')();
-var months = require('./months.js')();
-var actuarial = require('./actuarial.js')();
+var months = require('./public/js/months.js')();
+var actuarial = require('./modules/actuarial.js')();
 var express = require('express');
+
 
 var app = express();
 var port = config.port;
+
+app.use(express.static('public'));
 
 app.set('view engine', 'jade')
 

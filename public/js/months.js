@@ -78,7 +78,6 @@ var months = function() {
         return months;
     }
     
-
     return {
         getAll,
         getByOrder,
