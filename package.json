@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "build": "browserify modules/months.js -o public/js/months.js",
+    "start": "npm run build && node app.js"
   },
   "author": "Chris Meek",
   "license": "ISC",
@@ -13,5 +14,8 @@
     "express": "^4.16.2",
     "jade": "^1.11.0",
     "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "browserify": "^15.2.0"
   }
 }

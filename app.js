@@ -1,5 +1,5 @@
 var config = require('./config.js')();
-var months = require('./public/js/months.js')();
+var months = require('./modules/months.js')();
 var actuarial = require('./modules/actuarial.js')();
 var express = require('express');
 
