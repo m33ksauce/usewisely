@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify modules/months.js -o public/js/months.js",
+    "build": "browserify modules/form.js -o public/js/form.js",
     "start": "npm run build && node app.js"
   },
   "author": "Chris Meek",
@@ -16,6 +16,8 @@
     "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
-    "browserify": "^15.2.0"
+    "browserify": "^15.2.0",
+    "uglifyify": "^4.0.5",
+    "watch": "^1.0.2"
   }
 }

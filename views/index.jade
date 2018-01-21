@@ -1,23 +1,7 @@
 html
     head
         title #{title}
-        script(type="text/javascript", src="js/months.js")
-        script(type="text/javascript").
-            var setDays = function(e, max) {
-                var opts = "";
-                for (var i = 1; i <= max; i++) {
-                    opts += '<option value="' + i + '">' + i + '</option>';
-                }
-                e.innerHTML = opts;
-            }
-            
-            window.onload = function() {
-                var daysElem = document.getElementById("day");
-                document.getElementById("month").addEventListener("change", function() {
-                    var selected = document.getElementById("month").selectedIndex;
-                    setDays(daysElem, months.getByOrder(selected).maxDays); //months.getByOrder(selected).maxDays
-                });
-            }
+        script(type="text/javascript", src="js/form.js")
     body
         form
             select(id="month")
