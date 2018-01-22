@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify modules/form.js -o public/js/form.js",
+    "build": "browserify assets/js/form.js -o public/js/form.js",
     "start": "npm run build && node app.js"
   },
   "author": "Chris Meek",

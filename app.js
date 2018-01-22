@@ -13,8 +13,7 @@ app.set('view engine', 'jade')
 
 app.get('/', function (req, res) {
     res.render('index', {
-        'title': 'Use Wisely',
-        'months': months
+        'title': 'Use Wisely'
     });
 });
 

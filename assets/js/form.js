@@ -1,4 +1,4 @@
-var months = require('./months.js');
+var months = require('../../modules/months.js');
 
 var setDays = function(e, max) {
     var opts = "";
@@ -8,7 +8,16 @@ var setDays = function(e, max) {
     e.innerHTML = opts;
 }
 
+var populateMonths = function (elem) {
+    var innerHTML = ""
+    for (mo in months.getAll()) {
+        innerHTML += "<option value=\"" + mo.formatted + "\">" + mo.formatted + "</option>";
+    }
+    elem.innerHTML += innerHTML
+}
+
 window.onload = function() {
+    populateMonths(document.querySelector("#month"));
     var daysElem = document.getElementById("day");
     document.getElementById("month").addEventListener("change", function() {
         var selected = document.getElementById("month").selectedIndex;
