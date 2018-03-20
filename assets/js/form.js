@@ -1,6 +1,8 @@
-var months = require('../../modules/months.js');
+var months = require('../../modules/months.js')();
 
-var setDays = function(e, max) {
+var changeDays()
+
+var setDays = function(e, m) {
     var opts = "";
     for (var i = 1; i <= max; i++) {
         opts += '<option value="' + i + '">' + i + '</option>';
@@ -10,17 +12,18 @@ var setDays = function(e, max) {
 
 var populateMonths = function (elem) {
     var innerHTML = ""
-    for (mo in months.getAll()) {
-        innerHTML += "<option value=\"" + mo.formatted + "\">" + mo.formatted + "</option>";
+    allMonths = months.getAll();
+    for (mo in allMonths) {
+        innerHTML += "<option value=\"" + allMonths[mo].formatted + "\">" + allMonths[mo].formatted + "</option>";
     }
-    elem.innerHTML += innerHTML
+    elem.innerHTML += innerHTML;
 }
 
 window.onload = function() {
-    populateMonths(document.querySelector("#month"));
+    var monthElem = document.querySelector("#month");
     var daysElem = document.getElementById("day");
-    document.getElementById("month").addEventListener("change", function() {
-        var selected = document.getElementById("month").selectedIndex;
-        setDays(daysElem, months.getByOrder(selected).maxDays); //months.getByOrder(selected).maxDays
+    populateMonths(monthElem);
+    monthElem.addEventListener("change", function() {
+        changeDays(daysElem, monthElem.selectedIndex);
     });
 }

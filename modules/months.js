@@ -82,7 +82,7 @@ var months = function() {
         getAll,
         getByOrder,
         getByName
-    }
+    };
 };
 
 module.exports = months;

@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "watch": {
+    "launch": {
+      "patterns": [
+        "modules/**/*.js",
+        "assets/js/*.js"
+      ]
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify assets/js/form.js -o public/js/form.js",
-    "start": "npm run build && node app.js"
+    "launch": "npm run build && node app.js",
+    "start": "npm-watch"
   },
   "author": "Chris Meek",
   "license": "ISC",
@@ -17,6 +26,7 @@
   },
   "devDependencies": {
     "browserify": "^15.2.0",
+    "npm-watch": "^0.3.0",
     "uglifyify": "^4.0.5",
     "watch": "^1.0.2"
   }

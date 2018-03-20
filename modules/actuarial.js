@@ -9,7 +9,7 @@ var parseCSV = function(csv) {
             'age': parseInt(fields[0]),
             'male': parseFloat(fields[1]),
             'female': parseFloat(fields[2])
-        }
+        };
     }
     
     return {
@@ -18,7 +18,7 @@ var parseCSV = function(csv) {
             for (i = 0; data[i].age != age; i++);
             return (data[i].male + data[i].female)/2;
         }
-    }
+    };
 };
 
 var actuarial = function() {
@@ -36,7 +36,7 @@ var actuarial = function() {
         var now = new Date();
         var age = Math.floor((new Date() - dob)/(1000*60*60*24*365));
         return now.setFullYear(now.getFullYear() + Math.floor(le_data.getLEAvg(age)));
-    }
+    };
     
     return {
         getLifeExpectancy
