@@ -1,86 +1,75 @@
 var months = function() {
-    var months = {
-        'january': {
-            formatted: 'January',
+    var months = [
+        {
+            name: 'January',
             maxDays: 31,
             order: 0
         },
-        'february': {
-            formatted: 'February',
+        {
+            name: 'February',
             maxDays: 29,
             order: 1
         },
-        'march': {
-            formatted: 'March',
+        {
+            name: 'March',
             maxDays: 31,
             order: 2
         },
-        'april': {
-            formatted: 'April',
+        {
+            name: 'April',
             maxDays: 30,
             order: 3
         },
-        'may': {
-            formatted: 'May',
+        {
+            name: 'May',
             maxDays: 31,
             order: 4
         },
-        'june': {
-            formatted: 'June',
+        {
+            name: 'June',
             maxDays: 30,
             order: 5
         },
-        'july':{
-            formatted: 'July',
+        {
+            name: 'July',
             maxDays: 31,
             order: 6
         },
-        'august': {
-            formatted: 'August',
+        {
+            name: 'August',
             maxDays: 31,
             order: 7
         },
-        'september': {
-            formatted: 'September',
+        {
+            name: 'September',
             maxDays: 30,
             order: 8
         },
-        'october': {
-            formatted: 'October',
+        {
+            name: 'October',
             maxDays: 31,
             order: 9
         },
-        'november': {
-            formatted: 'November',
+        {
+            name: 'November',
             maxDays: 30,
             order: 10
         },
-        'december': {
-            formatted: 'December',
+        {
+            name: 'December',
             maxDays: 31,
             order: 11
         }
-    };
+    ];
 
-    var getByOrder = function(x) {
-        for (m in months) {
-            if (m.order == x) {
-                return m;
-            }
+    var getByName = function(name) {
+        for (var i = 0; i < length(months); i++) {
+            if (name == months[i].name) return months[i];
         }
     };
 
-    var getByName = function(name) {
-        return months[name.toLowerCase()];
-    }
-
-    var getAll = function() {
-        return months;
-    }
-    
     return {
-        getAll,
-        getByOrder,
+        months,
         getByName
     };
 };
