@@ -64,18 +64,30 @@ var populateYears = function(elem) {
     elem.innerHTML = innerHTML;
 }
 
+var updateButton = function(elem, monthElem, daysElem, yearsElem) {
+    link = "";
+    link += "/" + months[monthElem.selectedIndex].name;
+    link += "/" + daysElem.options[daysElem.selectedIndex].value;
+    link += "/" + yearsElem.options[yearsElem.selectedIndex].value;
+    elem.href = link;
+}
+
 window.onload = function() {
     var monthElem = document.querySelector("#month");
     var daysElem = document.querySelector("#day");
     var yearsElem = document.querySelector("#year");
+    var buttonElem = document.querySelector("#gobutton");
     populateMonths(monthElem);
     populateDays(daysElem, monthElem);
     populateYears(yearsElem);
+    updateButton(buttonElem, monthElem, daysElem, yearsElem);
     monthElem.addEventListener("change", function() {
         populateDays(daysElem, monthElem);
-        toggleLeapYear(monthElem, dasyElem, yearsElem);
+        toggleLeapYear(monthElem, daysElem, yearsElem);
+        updateButton(buttonElem, monthElem, daysElem, yearsElem);
     });
     yearsElem.addEventListener("change", function() {
-        toggleLeapYear(monthElem, dasyElem, yearsElem);
+        toggleLeapYear(monthElem, daysElem, yearsElem);
+        updateButton(buttonElem, monthElem, daysElem, yearsElem);
     });
 }

@@ -17,7 +17,12 @@ app.get('/', function (req, res) {
     });
 });
 
-app.get('/:month/:day/:year', function (req, res) {    
+app.get('/:month/:day/:year', function (req, res) {
+    if (!months.getByName(req.params['month'].toLowerCase())) {
+        res.render('error', {
+            'message': 'error getting month'
+        });
+    }
     var uMonth = req.params['month'].toLowerCase();
     var uDay = req.params['day'];
     var uYear = req.params['year'];

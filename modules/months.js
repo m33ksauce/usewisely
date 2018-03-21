@@ -63,8 +63,10 @@ var months = function() {
     ];
 
     var getByName = function(name) {
-        for (var i = 0; i < length(months); i++) {
-            if (name == months[i].name) return months[i];
+        for (var i = 0; i < months.length; i++) {
+            if (name == months[i].name.toLowerCase()) {
+                return months[i];
+            }
         }
     };
 
