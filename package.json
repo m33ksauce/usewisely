@@ -15,7 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify assets/js/form.js -o public/js/form.js",
     "launch": "npm run build && node app.js",
-    "start": "npm-watch"
+    "develop": "npm-watch",
+    "start": "npm run launch"
   },
   "author": "Chris Meek",
   "license": "ISC",
