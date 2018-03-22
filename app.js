@@ -5,7 +5,9 @@ var express = require('express');
 
 
 var app = express();
+
 var port = config.port;
+var baseTitle = "Use Wisely!";
 
 app.use(express.static('public'));
 
@@ -13,7 +15,7 @@ app.set('view engine', 'jade')
 
 app.get('/', function (req, res) {
     res.render('index', {
-        'title': 'Use Wisely'
+        'title': baseTitle
     });
 });
 

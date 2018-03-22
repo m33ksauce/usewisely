@@ -7,7 +7,8 @@
     "launch": {
       "patterns": [
         "modules/**/*.js",
-        "assets/js/*.js"
+        "assets/js/*.js",
+        "app.js"
       ]
     }
   },
